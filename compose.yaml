@@ -1,0 +1,26 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - frontend-vlm:/app
+      - /app/node_modules
+    networks:
+      - nur-portfolio-net
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /app
+          ignore:
+            - node_modules
+
+volumes:
+  frontend-vlm:
+
+networks:
+  nur-portfolio-net:
