@@ -1,7 +1,9 @@
+import Portfolio from "./portfolio/Portfolio";
+
 function App() {
   return (
     <>
-      <h1>Hello From Nuruddin</h1>
+      <Portfolio />
     </>
   );
 }
