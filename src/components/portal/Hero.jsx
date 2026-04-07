@@ -84,7 +84,7 @@ function Hero() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-600 blur-xl opacity-30" />
             <div className="relative w-full h-full rounded-3xl border border-gray-700 bg-gray-900 overflow-hidden flex items-center justify-center">
               <img
-                src="nuruddin-img.png"
+                src="nuruddin-img.jpg"
                 alt="Nuruddin"
                 className="w-full h-full object-cover"
                 onError={(e) => {
