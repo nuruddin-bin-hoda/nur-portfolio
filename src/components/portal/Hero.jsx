@@ -92,9 +92,9 @@ function Hero() {
                   e.target.parentElement.classList.add("items-center", "justify-center");
                 }}
               />
-              {/* Fallback initials */}
-              <span className="absolute text-6xl font-extrabold text-indigo-400 opacity-30 select-none">
-                N
+              {/* Brand watermark — top-left */}
+              <span className="absolute top-3 left-4 text-2xl font-extrabold text-white opacity-40 select-none z-20 tracking-tight">
+                N<span className="text-indigo-400">.</span>
               </span>
             </div>
             {/* Floating badge */}
