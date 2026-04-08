@@ -35,10 +35,10 @@ function SkillBar({ name, level }) {
   return (
     <div>
       <div className="flex justify-between text-sm mb-1.5">
-        <span className="text-gray-300 font-medium">{name}</span>
-        <span className="text-indigo-400">{level}%</span>
+        <span className="text-stone-700 dark:text-gray-300 font-medium">{name}</span>
+        <span className="text-indigo-500 dark:text-indigo-400">{level}%</span>
       </div>
-      <div className="h-2 rounded-full bg-gray-700 overflow-hidden">
+      <div className="h-2 rounded-full bg-stone-200 dark:bg-gray-700 overflow-hidden">
         <div
           className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"
           style={{ width: `${level}%` }}
@@ -50,15 +50,13 @@ function SkillBar({ name, level }) {
 
 function Skills() {
   return (
-    <section id="skills" className="py-24 bg-gray-950 px-6">
+    <section id="skills" className="py-24 bg-stone-50 dark:bg-gray-950 px-6 transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-indigo-400 text-sm font-semibold tracking-widest uppercase">
+          <span className="text-indigo-500 dark:text-indigo-400 text-sm font-semibold tracking-widest uppercase">
             What I Know
           </span>
-          <h2 className="mt-2 text-4xl font-extrabold text-white">
-            My Skills
-          </h2>
+          <h2 className="mt-2 text-4xl font-extrabold text-stone-900 dark:text-white">My Skills</h2>
           <div className="mt-4 mx-auto w-16 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500" />
         </div>
 
@@ -66,12 +64,10 @@ function Skills() {
           {skillCategories.map((cat) => (
             <div
               key={cat.category}
-              className="rounded-2xl bg-gray-900 border border-gray-800 p-8 hover:border-indigo-500/40 transition-colors duration-300"
+              className="rounded-2xl bg-white dark:bg-gray-900 border border-stone-200 dark:border-gray-800 p-8 hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-colors duration-300 shadow-sm dark:shadow-none"
             >
               <div className="text-3xl mb-3">{cat.icon}</div>
-              <h3 className="text-lg font-bold text-white mb-6">
-                {cat.category}
-              </h3>
+              <h3 className="text-lg font-bold text-stone-900 dark:text-white mb-6">{cat.category}</h3>
               <div className="space-y-5">
                 {cat.skills.map((skill) => (
                   <SkillBar key={skill.name} {...skill} />
