@@ -20,7 +20,6 @@ function Footer() {
             </a>
           ))}
         </div>
-        <p className="text-stone-300 dark:text-gray-600 text-xs">Built with React &amp; Tailwind CSS</p>
       </div>
     </footer>
   );
