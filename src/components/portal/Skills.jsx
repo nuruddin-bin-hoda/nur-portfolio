@@ -62,25 +62,8 @@ function Skills() {
           <div className="mt-4 mx-auto w-16 h-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skillCategories.map((cat) => (
-            <div
-              key={cat.category}
-              className="rounded-2xl bg-white dark:bg-gray-900 border border-stone-200 dark:border-gray-800 p-8 hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-colors duration-300 shadow-sm dark:shadow-none"
-            >
-              <div className="text-3xl mb-3">{cat.icon}</div>
-              <h3 className="text-lg font-bold text-stone-900 dark:text-white mb-6">{cat.category}</h3>
-              <div className="space-y-5">
-                {cat.skills.map((skill) => (
-                  <SkillBar key={skill.name} {...skill} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
         {/* Featured Skill — Prompt Engineering */}
-        <div className="mt-8 relative rounded-2xl p-px overflow-hidden shadow-lg">
+        <div className="mb-8 relative rounded-2xl p-px overflow-hidden shadow-lg">
           {/* Animated gradient border */}
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 animate-pulse opacity-70 rounded-2xl" />
 
@@ -127,6 +110,23 @@ function Skills() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {skillCategories.map((cat) => (
+            <div
+              key={cat.category}
+              className="rounded-2xl bg-white dark:bg-gray-900 border border-stone-200 dark:border-gray-800 p-8 hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-colors duration-300 shadow-sm dark:shadow-none"
+            >
+              <div className="text-3xl mb-3">{cat.icon}</div>
+              <h3 className="text-lg font-bold text-stone-900 dark:text-white mb-6">{cat.category}</h3>
+              <div className="space-y-5">
+                {cat.skills.map((skill) => (
+                  <SkillBar key={skill.name} {...skill} />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
