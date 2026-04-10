@@ -2,7 +2,6 @@ const stats = [
   { label: "Projects Completed", value: "10+" },
   { label: "Technologies", value: "15+" },
   { label: "Years Learning", value: "3+" },
-  { label: "Open Source Contributions", value: "5+" },
 ];
 
 function About() {
