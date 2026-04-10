@@ -31,8 +31,8 @@ function Hero() {
             </span>
           </h1>
           <p className="text-lg text-stone-600 dark:text-gray-400 mb-8 leading-relaxed">
-            A passionate web developer crafting clean, performant, and
-            user-friendly digital experiences.
+            A passionate web engineer crafting scalable, performant, and
+            user-friendly web applications.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
