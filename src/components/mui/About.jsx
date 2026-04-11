@@ -9,6 +9,7 @@ const stats = [
   { value: "10+", label: "Projects Completed" },
   { value: "15+", label: "Technologies" },
   { value: "3+", label: "Years Learning" },
+  { value: "87%", label: "Prompt Engineering Proficiency" },
 ];
 
 const tags = ["React", "JavaScript", "Tailwind CSS", "Node.js", "Git", "REST APIs"];
@@ -94,32 +95,6 @@ export default function About() {
                 </Typography>
               </Paper>
             ))}
-            {/* 3rd stat centered */}
-            <Paper
-              elevation={0}
-              sx={{
-                p: 3, textAlign: "center", borderRadius: 4, gridColumn: "1 / -1",
-                border: `1px solid ${theme.palette.divider}`,
-                bgcolor: "background.default",
-                transition: "border-color 0.25s, transform 0.25s",
-                "&:hover": { borderColor: "primary.main", transform: "translateY(-4px)" },
-              }}
-            >
-              <Typography
-                variant="h3"
-                fontWeight={800}
-                sx={{
-                  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                87%
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-                Prompt Engineering Proficiency
-              </Typography>
-            </Paper>
           </Box>
         </Box>
       </Container>

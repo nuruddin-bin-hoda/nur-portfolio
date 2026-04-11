@@ -84,7 +84,7 @@ export default function Skills() {
         <Paper
           elevation={0}
           sx={{
-            mb: 4, p: 4, borderRadius: 4, position: "relative", overflow: "hidden",
+            mb: 4, p: 4, borderRadius: 4, position: "relative",
             border: "2px solid transparent",
             background: `linear-gradient(${theme.palette.background.paper}, ${theme.palette.background.paper}) padding-box,
                          linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main}) border-box`,
