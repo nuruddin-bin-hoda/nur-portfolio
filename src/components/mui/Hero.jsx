@@ -59,7 +59,7 @@ export default function Hero() {
               }}
             />
 
-            <Typography variant="h1" sx={{ fontSize: { xs: "2.8rem", md: "3.8rem" }, mb: 2 }}>
+            <Typography variant="h1" sx={{ fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.8rem" }, mb: 2 }}>
               Hi, I&apos;m{" "}
               <Box
                 component="span"
@@ -78,7 +78,7 @@ export default function Hero() {
               user-friendly web applications.
             </Typography>
 
-            <Stack direction="row" spacing={2} flexWrap="wrap" sx={{ mb: 4 }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 4 }}>
               <Button variant="contained" size="large" href="#projects" endIcon={<ArrowForwardIcon />}>
                 View My Work
               </Button>
@@ -87,9 +87,9 @@ export default function Hero() {
               >
                 Get In Touch
               </Button>
-            </Stack>
+            </Box>
 
-            <Stack direction="row" spacing={3}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
               {socials.map((s) => (
                 <Typography
                   key={s.label}
@@ -108,7 +108,7 @@ export default function Hero() {
                   {s.label}
                 </Typography>
               ))}
-            </Stack>
+            </Box>
           </Box>
 
           {/* Image card */}

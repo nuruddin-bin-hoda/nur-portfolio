@@ -9,8 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useTheme } from "../../context/ThemeContext";
-import { useTheme as useMuiTheme } from "@mui/material/styles";
-import { alpha } from "../../theme/muiTheme";
+import { useTheme as useMuiTheme, alpha } from "@mui/material/styles";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -27,45 +26,44 @@ export default function Header() {
 
   const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
 
+  const bgColor = alpha(muiTheme.palette.background.default, scrolled ? 0.92 : 0.75);
+
   return (
     <>
       <AppBar
         position="fixed"
         elevation={0}
         sx={{
-          bgcolor: scrolled
-            ? alpha(muiTheme.palette.background.default, 0.85)
-            : "transparent",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          borderBottom: scrolled
-            ? `1px solid ${muiTheme.palette.divider}`
-            : "none",
-          transition: "all 0.3s ease",
+          bgcolor: bgColor,
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: `1px solid ${scrolled ? muiTheme.palette.divider : "transparent"}`,
+          transition: "border-color 0.3s, background-color 0.3s",
           color: "text.primary",
         }}
       >
-        <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ py: 0.5, justifyContent: "space-between" }}>
+        <Container maxWidth="lg" disableGutters sx={{ px: { xs: 2, sm: 3 } }}>
+          <Toolbar disableGutters sx={{ minHeight: { xs: 56, md: 64 }, justifyContent: "space-between" }}>
+
             {/* Brand */}
             <Typography
               component="a"
               href="#home"
               variant="h5"
               fontWeight={900}
-              sx={{ textDecoration: "none", color: "inherit", letterSpacing: 2 }}
+              sx={{ textDecoration: "none", color: "text.primary", letterSpacing: 2, flexShrink: 0 }}
             >
               N<Box component="span" sx={{ color: "primary.main" }}>.</Box>
             </Typography>
 
             {/* Desktop nav */}
-            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1 }}>
+            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
               {navLinks.map((link) => (
                 <Button
                   key={link.href}
                   href={link.href}
-                  color="inherit"
                   size="small"
-                  sx={{ fontWeight: 500, color: "text.secondary", "&:hover": { color: "text.primary" } }}
+                  sx={{ fontWeight: 500, color: "text.secondary", "&:hover": { color: "text.primary", bgcolor: "action.hover" } }}
                 >
                   {link.label}
                 </Button>
@@ -90,16 +88,25 @@ export default function Header() {
               </Button>
             </Box>
 
-            {/* Mobile */}
-            <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
+            {/* Mobile controls */}
+            <Box sx={{ display: { xs: "flex", md: "none" }, alignItems: "center", gap: 1 }}>
               <IconButton
                 onClick={toggleTheme}
                 size="small"
-                sx={{ border: `1px solid ${muiTheme.palette.divider}`, borderRadius: 2, color: "text.secondary" }}
+                sx={{
+                  border: `1px solid ${muiTheme.palette.divider}`,
+                  borderRadius: 2,
+                  color: "text.secondary",
+                  p: 0.75,
+                }}
               >
                 {mode === "dark" ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
               </IconButton>
-              <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
+              <IconButton
+                onClick={() => setDrawerOpen(true)}
+                sx={{ color: "text.primary", p: 0.75 }}
+                aria-label="Open menu"
+              >
                 <MenuIcon />
               </IconButton>
             </Box>
@@ -108,18 +115,31 @@ export default function Header() {
       </AppBar>
 
       {/* Mobile Drawer */}
-      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}
-        PaperProps={{ sx: { width: 260, bgcolor: "background.default", px: 2, py: 2 } }}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        PaperProps={{
+          sx: {
+            width: "min(280px, 85vw)",
+            bgcolor: "background.default",
+            px: 2,
+            pt: 2,
+            pb: 3,
+          },
+        }}
       >
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-          <Typography variant="h6" fontWeight={800}>
+          <Typography variant="h6" fontWeight={900}>
             N<Box component="span" sx={{ color: "primary.main" }}>.</Box>
           </Typography>
-          <IconButton onClick={() => setDrawerOpen(false)}>
+          <IconButton onClick={() => setDrawerOpen(false)} size="small">
             <CloseIcon />
           </IconButton>
         </Box>
-        <Divider sx={{ mb: 2 }} />
+
+        <Divider sx={{ mb: 1.5 }} />
+
         <List disablePadding>
           {navLinks.map((link) => (
             <ListItemButton
@@ -127,14 +147,24 @@ export default function Header() {
               component="a"
               href={link.href}
               onClick={() => setDrawerOpen(false)}
-              sx={{ borderRadius: 2, mb: 0.5 }}
+              sx={{ borderRadius: 2, mb: 0.5, py: 1.2 }}
             >
-              <ListItemText primary={link.label} primaryTypographyProps={{ fontWeight: 500 }} />
+              <ListItemText
+                primary={link.label}
+                primaryTypographyProps={{ fontWeight: 600, color: "text.primary" }}
+              />
             </ListItemButton>
           ))}
         </List>
-        <Box sx={{ mt: 2 }}>
-          <Button variant="contained" fullWidth href="#contact" onClick={() => setDrawerOpen(false)}>
+
+        <Box sx={{ mt: 3 }}>
+          <Button
+            variant="contained"
+            fullWidth
+            href="#contact"
+            onClick={() => setDrawerOpen(false)}
+            size="large"
+          >
             Hire Me
           </Button>
         </Box>

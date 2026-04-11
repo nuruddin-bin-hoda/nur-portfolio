@@ -68,14 +68,14 @@ export default function Skills() {
   const theme = useTheme();
 
   return (
-    <Box id="skills" sx={{ py: { xs: 10, md: 14 }, bgcolor: "background.default" }}>
+    <Box id="skills" sx={{ py: { xs: 8, md: 14 }, bgcolor: "background.default", overflow: "hidden" }}>
       <Container maxWidth="lg">
         {/* Heading */}
         <Box sx={{ textAlign: "center", mb: 8 }}>
           <Typography variant="overline" color="primary" fontWeight={700} letterSpacing={3}>
             What I Know
           </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 2 }}>My Skills</Typography>
+          <Typography variant="h2" sx={{ mt: 1, mb: 2, fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" } }}>My Skills</Typography>
           <Box sx={{ mx: "auto", width: 56, height: 4, borderRadius: 2,
             background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` }} />
         </Box>
@@ -131,7 +131,7 @@ export default function Skills() {
               &ldquo;I don&apos;t just use AI — I speak its language fluently.&rdquo;
             </Typography>
 
-            <Stack direction="row" flexWrap="wrap" gap={1}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
               {promptTags.map((tag) => (
                 <Chip
                   key={tag}
@@ -145,7 +145,7 @@ export default function Skills() {
                   }}
                 />
               ))}
-            </Stack>
+            </Box>
           </Box>
         </Paper>
 

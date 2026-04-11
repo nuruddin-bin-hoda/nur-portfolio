@@ -1,6 +1,6 @@
 import {
-  Box, Container, Typography, Button, Chip, Stack,
-  Paper, Divider,
+  Box, Container, Typography, Button, Chip,
+  Paper,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { alpha } from "../../theme/muiTheme";
@@ -18,22 +18,26 @@ export default function About() {
   const theme = useTheme();
 
   return (
-    <Box id="about" sx={{ py: { xs: 10, md: 14 }, bgcolor: "background.paper" }}>
+    <Box id="about" sx={{ py: { xs: 8, md: 14 }, bgcolor: "background.paper" }}>
       <Container maxWidth="lg">
         {/* Section heading */}
-        <Box sx={{ textAlign: "center", mb: 8 }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 6, md: 8 } }}>
           <Typography variant="overline" color="primary" fontWeight={700} letterSpacing={3}>
             Who I Am
           </Typography>
-          <Typography variant="h2" sx={{ mt: 1, mb: 2 }}>About Me</Typography>
-          <Box sx={{ mx: "auto", width: 56, height: 4, borderRadius: 2,
-            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` }} />
+          <Typography variant="h2" sx={{ mt: 1, mb: 2, fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" } }}>
+            About Me
+          </Typography>
+          <Box sx={{
+            mx: "auto", width: 56, height: 4, borderRadius: 2,
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+          }} />
         </Box>
 
-        <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, gap: 8, alignItems: "center" }}>
+        <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, gap: { xs: 6, md: 8 }, alignItems: "start" }}>
           {/* Text */}
           <Box>
-            <Typography variant="h4" sx={{ mb: 2 }}>
+            <Typography variant="h5" fontWeight={700} sx={{ mb: 2, fontSize: { xs: "1.2rem", md: "1.5rem" } }}>
               A developer who loves building things for the web
             </Typography>
             <Typography color="text.secondary" sx={{ mb: 2, lineHeight: 1.9 }}>
@@ -46,7 +50,8 @@ export default function About() {
               open-source projects, or sharing knowledge with the developer community.
             </Typography>
 
-            <Stack direction="row" flexWrap="wrap" gap={1} sx={{ mb: 4 }}>
+            {/* Chips — Box flex instead of Stack to avoid gap/wrap bugs on mobile */}
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 4 }}>
               {tags.map((tag) => (
                 <Chip
                   key={tag}
@@ -60,19 +65,21 @@ export default function About() {
                   }}
                 />
               ))}
-            </Stack>
+            </Box>
 
             <Button variant="contained" href="#contact">Let&apos;s Connect</Button>
           </Box>
 
-          {/* Stats */}
-          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+          {/* Stats — 2x2 grid always */}
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: { xs: 2, md: 3 } }}>
             {stats.map((s) => (
               <Paper
                 key={s.label}
                 elevation={0}
                 sx={{
-                  p: 3, textAlign: "center", borderRadius: 4,
+                  p: { xs: 2, md: 3 },
+                  textAlign: "center",
+                  borderRadius: 4,
                   border: `1px solid ${theme.palette.divider}`,
                   bgcolor: "background.default",
                   transition: "border-color 0.25s, transform 0.25s",
@@ -83,6 +90,7 @@ export default function About() {
                   variant="h3"
                   fontWeight={800}
                   sx={{
+                    fontSize: { xs: "1.8rem", md: "2.5rem" },
                     background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
@@ -90,7 +98,7 @@ export default function About() {
                 >
                   {s.value}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: "block", lineHeight: 1.4 }}>
                   {s.label}
                 </Typography>
               </Paper>
