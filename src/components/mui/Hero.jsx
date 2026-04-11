@@ -21,13 +21,14 @@ export default function Hero() {
     <Box
       id="home"
       sx={{
-        minHeight: "100vh",
+        minHeight: { xs: "auto", md: "100vh" },
         display: "flex",
-        alignItems: "center",
+        alignItems: { xs: "flex-start", md: "center" },
         position: "relative",
         overflow: "hidden",
         bgcolor: "background.default",
         pt: { xs: "72px", md: "96px" },
+        pb: { xs: 8, md: 0 },
       }}
     >
       {/* Background blobs */}
@@ -167,10 +168,10 @@ export default function Hero() {
         </Box>
       </Container>
 
-      {/* Scroll hint */}
+      {/* Scroll hint — desktop only */}
       <Box sx={{
         position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)",
-        display: "flex", flexDirection: "column", alignItems: "center", gap: 0.5,
+        display: { xs: "none", md: "flex" }, flexDirection: "column", alignItems: "center", gap: 0.5,
         color: "text.disabled",
         "@keyframes bounce": { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(6px)" } },
         animation: "bounce 2s infinite",
