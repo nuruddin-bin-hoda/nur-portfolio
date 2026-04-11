@@ -1,14 +1,14 @@
-import Header from "../portal/Header";
-import Hero from "../portal/Hero";
-import About from "../portal/About";
-import Skills from "../portal/Skills";
-import Projects from "../portal/Projects";
-import Contact from "../portal/Contact";
-import Footer from "../portal/Footer";
+import Header from "../mui/Header";
+import Hero from "../mui/Hero";
+import About from "../mui/About";
+import Skills from "../mui/Skills";
+import Projects from "../mui/Projects";
+import Contact from "../mui/Contact";
+import Footer from "../mui/Footer";
 
 function Portfolio() {
   return (
-    <div className="font-sans antialiased">
+    <>
       <Header />
       <Hero />
       <About />
@@ -16,7 +16,7 @@ function Portfolio() {
       <Projects />
       <Contact />
       <Footer />
-    </div>
+    </>
   );
 }
 
