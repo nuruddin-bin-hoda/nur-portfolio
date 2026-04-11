@@ -27,7 +27,7 @@ export default function Hero() {
         position: "relative",
         overflow: "hidden",
         bgcolor: "background.default",
-        pt: 10,
+        pt: { xs: "72px", md: "96px" },
       }}
     >
       {/* Background blobs */}
